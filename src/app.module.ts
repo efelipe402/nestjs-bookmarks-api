@@ -5,7 +5,12 @@ import { AuthModule } from './auth/auth.module';
 import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
-  imports: [AuthModule, UserModule, BookmarksModule, PrismaModule],
+  imports: [
+    AuthModule,
+    UserModule,
+    BookmarksModule,
+    PrismaModule,
+  ],
   controllers: [],
   providers: [],
 })
