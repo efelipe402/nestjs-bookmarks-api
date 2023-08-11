@@ -89,7 +89,7 @@ export class AuthService {
       payload,
       {
         expiresIn: '15m',
-        secret: this.config.get('jWT_SECRET'),
+        secret: this.config.get('JWT_SECRET'),
       },
     );
     return {
