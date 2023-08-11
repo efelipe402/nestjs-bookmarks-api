@@ -4,10 +4,10 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { User } from '@prisma/client';
-import { GetUser } from 'src/auth/decorator';
-import { JwtGuard } from 'src/auth/guard';
-import { ROUTES_API } from 'src/shared/apiRoutes';
-import { ENDPOINTS } from 'src/shared/endpoints';
+import { GetUser } from '../auth/decorator';
+import { JwtGuard } from '../auth/guard';
+import { ROUTES_API } from '../shared/apiRoutes';
+import { ENDPOINTS } from '../shared/endpoints';
 
 @UseGuards(JwtGuard)
 @Controller(ROUTES_API.users)

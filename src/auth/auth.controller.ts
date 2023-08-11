@@ -6,8 +6,8 @@ import {
   Post,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { ROUTES_API } from 'src/shared/apiRoutes';
-import { ENDPOINTS } from 'src/shared/endpoints';
+import { ROUTES_API } from '../shared/apiRoutes';
+import { ENDPOINTS } from '../shared/endpoints';
 import { AuthDto } from './dto';
 
 @Controller(ROUTES_API.auth)

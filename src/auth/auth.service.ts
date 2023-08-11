@@ -6,10 +6,10 @@ import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 import {
   AUTH_CODES,
   AUTH_MESSAGES,
-} from 'src/shared/constants';
+} from '../shared/constants';
 import * as argon from 'argon2';
 import { AuthDto } from './dto';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from '../prisma/prisma.service';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 @Injectable()
