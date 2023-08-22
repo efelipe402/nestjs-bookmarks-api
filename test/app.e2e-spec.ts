@@ -13,6 +13,7 @@ import {
 import { ROUTES_API } from '../src/shared/apiRoutes';
 import { ENDPOINTS } from '../src/shared/endpoints';
 import { AuthDto } from '../src/auth/dto';
+import { EditUserDto } from '../src/user/dto';
 
 describe('App e2e', () => {
   let app: INestApplication;
@@ -43,6 +44,7 @@ describe('App e2e', () => {
     app.close();
   });
 
+  // USER AUTH TESTING
   describe('Auth', () => {
     const dto: AuthDto = {
       email: 'user1@gmail.com',
@@ -128,6 +130,42 @@ describe('App e2e', () => {
           .withBody(dto)
           .expectStatus(200)
           .stores('userAt', 'access_token');
+      });
+    });
+  });
+
+  // USER TESTING
+  describe('User', () => {
+    describe('Get me', () => {
+      it('should get current user', () => {
+        return pactum
+          .spec()
+          .get(
+            `/${ROUTES_API.users}/${ENDPOINTS.me}`,
+          )
+          .withHeaders({
+            Authorization: 'Bearer $S{userAt}',
+          })
+          .expectStatus(200);
+      });
+    });
+
+    describe('Edit user', () => {
+      it('should edit user', () => {
+        const dto: EditUserDto = {
+          firstName: 'Juan Lopez',
+          email: 'user1@gmail.com',
+        };
+        return pactum
+          .spec()
+          .patch(`/${ROUTES_API.users}`)
+          .withHeaders({
+            Authorization: 'Bearer $S{userAt}',
+          })
+          .withBody(dto)
+          .expectStatus(200)
+          .expectBodyContains(dto.firstName)
+          .expectBodyContains(dto.email);
       });
     });
   });
