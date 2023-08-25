@@ -1,0 +1,5 @@
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=123
+
+DATABASE_URL="postgresql://postgres:123@localhost:5434/nest?schema=public"
+JWT_SECRET='secret-0123'
